@@ -31,7 +31,7 @@ public class AccountCreditController {
 	}*/
 	
 	@PostMapping
-	public Mono<AccountCredit> saveAccountBank(@RequestBody @Valid AccountCredit accountCredit) {
+	public Mono<AccountCredit> saveAccountCredit(@RequestBody @Valid AccountCredit accountCredit) {
 		return AccountCreditServ.save(accountCredit);
 	}
 	

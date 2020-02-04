@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -35,6 +33,7 @@ public AccountCredit(Client client, ProductCredit product, Double lineCredit, Do
 	this.interes = interes;
 	this.balance = balance;
 	this.state = state;
+	
 }
 
 

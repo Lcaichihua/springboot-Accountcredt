@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 public interface AccountCreditService {
 
 	
-	//Flux<AccountBank> findxClient(String idClient);
+	//Flux<AccountCredit> findxClient(String idClient);
 	Mono<AccountCredit> save(AccountCredit accountCredit);
 
 	Flux<AccountCredit> findAll();
@@ -23,4 +23,6 @@ public interface AccountCreditService {
 	Mono<Void> deletexId(String id);
 
 	Mono<Void> delete(AccountCredit accountCredit);
+	
+	//Mono<AccountCredit> findById(String id);
 }
