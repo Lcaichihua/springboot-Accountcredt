@@ -3,10 +3,10 @@ package com.cavetech.springboot.Accountcredt.app.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-
 import com.cavetech.springboot.Accountcredt.app.domain.AccountCredit;
 import com.cavetech.springboot.Accountcredt.app.domain.Client;
 import com.cavetech.springboot.Accountcredt.app.domain.ProductCredit;
+import com.cavetech.springboot.Accountcredt.app.dto.ReportBalance;
 import com.cavetech.springboot.Accountcredt.app.repository.AccountCreditRepository;
 import com.cavetech.springboot.Accountcredt.app.service.AccountCreditService;
 
@@ -19,6 +19,19 @@ public class AccountCreditServiceImpl implements AccountCreditService {
 	@Autowired
 	AccountCreditRepository acccreditkrep;
 
+	
+	@Override
+	public Flux<ReportBalance> reportSaldo(String idCliente) {
+		return WebClient.builder().baseUrl("http://localhost:8009/client/client/").build().get()
+				.uri(idCliente).retrieve().bodyToMono(Client.class).log()
+				.flatMapMany(cli -> {
+					return acccreditkrep.findByClient(cli);
+				}).flatMap(clPro -> {
+					return Flux.just(new ReportBalance(clPro.getNumcount(),
+							clPro.getBalance()));
+				});
+	}
+	
 	// registro de cuentas bancarias 
 	@Override
 	public Mono<AccountCredit> save(AccountCredit accountCredit) {

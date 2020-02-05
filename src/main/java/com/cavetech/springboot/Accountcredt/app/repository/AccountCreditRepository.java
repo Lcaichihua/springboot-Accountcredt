@@ -4,6 +4,8 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import com.cavetech.springboot.Accountcredt.app.domain.AccountCredit;
+import com.cavetech.springboot.Accountcredt.app.domain.Client;
+	
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -15,5 +17,6 @@ public interface AccountCreditRepository extends ReactiveMongoRepository<Account
 	public Flux<AccountCredit> buscarPorCodigoTipoClienteIdTipoProducto(String idCliente, Integer codigoTipoCliente, Integer idTipoProducto);
 
 	public Mono<AccountCredit> findByNumcount( String numcount);
+	public Flux<AccountCredit> findByClient( Client client);	
 	
 }

@@ -2,9 +2,8 @@ package com.cavetech.springboot.Accountcredt.app.service;
 
 
 
-
-
 import com.cavetech.springboot.Accountcredt.app.domain.AccountCredit;
+import com.cavetech.springboot.Accountcredt.app.dto.ReportBalance;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -24,5 +23,5 @@ public interface AccountCreditService {
 
 	Mono<Void> delete(AccountCredit accountCredit);
 	
-	//Mono<AccountCredit> findById(String id);
+	 Flux<ReportBalance> reportSaldo(String idCliente);
 }
